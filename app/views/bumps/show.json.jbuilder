@@ -1,0 +1,1 @@
+json.partial! "bumps/bump", bump: @bump

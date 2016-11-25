@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  latitude: MyString
+  longitude: MyString
+  lengthSteps: 1
+  widthSteps: 1
+  depth: 1
+  videoUrl: MyString
+
+two:
+  latitude: MyString
+  longitude: MyString
+  lengthSteps: 1
+  widthSteps: 1
+  depth: 1
+  videoUrl: MyString

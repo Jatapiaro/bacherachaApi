@@ -1,0 +1,1 @@
+json.array! @bumps, partial: 'bumps/bump', as: :bump

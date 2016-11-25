@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @bump.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @bump.longitude %>
+</p>
+
+<p>
+  <strong>Lengthsteps:</strong>
+  <%= @bump.lengthSteps %>
+</p>
+
+<p>
+  <strong>Widthsteps:</strong>
+  <%= @bump.widthSteps %>
+</p>
+
+<p>
+  <strong>Depth:</strong>
+  <%= @bump.depth %>
+</p>
+
+<p>
+  <strong>Videourl:</strong>
+  <%= @bump.videoUrl %>
+</p>
+
+<%= link_to 'Edit', edit_bump_path(@bump) %> |
+<%= link_to 'Back', bumps_path %>
