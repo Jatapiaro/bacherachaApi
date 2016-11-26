@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise_token_auth'
-gem 'rack-cors'
+gem 'rack-cors', :require => 'rack/cors'
 gem 'omniauth'
 
 # Use ActiveModel has_secure_password

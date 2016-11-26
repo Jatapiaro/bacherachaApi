@@ -25,7 +25,9 @@ class BumpsController < ApplicationController
   # POST /bumps
   # POST /bumps.json
   def create
-    @bump = Bump.new(bump_params)
+
+    @bump = current_user.bumps.new(bump_params)
+    ##@bump = Bump.new(bump_params)
 
     respond_to do |format|
       if @bump.save
