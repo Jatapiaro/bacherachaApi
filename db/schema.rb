@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127021247) do
+ActiveRecord::Schema.define(version: 20161127034813) do
 
   create_table "bumps", force: :cascade do |t|
-    t.integer  "latitude",    limit: 12
-    t.integer  "longitude",   limit: 12
+    t.decimal  "latitude",    precision: 64, scale: 12
+    t.decimal  "longitude",   precision: 64, scale: 12
     t.integer  "lengthSteps"
     t.integer  "widthSteps"
     t.integer  "depth"
     t.string   "videoUrl"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "user_id"
   end
 
