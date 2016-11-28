@@ -3601,3 +3601,837 @@ Processing by BumpsController#index as JSON
   [1m[35m (0.1ms)[0m  begin transaction
   [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
 Completed 200 OK in 89ms (Views: 10.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 21:52:20 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"jacobotapia@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobotapia@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'jacobotapia@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Completed 401 Unauthorized in 105ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 21:52:29 -0600
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1[0m
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"9Hp_3crhSU9Cc1Am0adTqQ\":{\"token\":\"$2a$10$UFKFrm2VZWmQUU.i4KK8COx5yx0nHaGuvF6BbBExZOUjub8a3rMXC\",\"expiry\":1481502955},\"J7-AZo6JoeLgB_uMvdrslw\":{\"token\":\"$2a$10$n82L7eNGmPg.09SXagIfq.1.En0uRVV.c36/jzLQ23GG0Ob4r7HI6\",\"expiry\":1481514749}}"], ["updated_at", "2016-11-28 03:52:29.799961"], ["id", 1]]
+  [1m[35m (3.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["current_sign_in_at", "2016-11-28 03:52:29.819367"], ["current_sign_in_ip", "::1"], ["sign_in_count", 2], ["updated_at", "2016-11-28 03:52:29.820720"], ["id", 1]]
+  [1m[36m (2.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"J7-AZo6JoeLgB_uMvdrslw\":{\"token\":\"$2a$10$n82L7eNGmPg.09SXagIfq.1.En0uRVV.c36/jzLQ23GG0Ob4r7HI6\",\"expiry\":1481514749}}"], ["updated_at", "2016-11-28 03:52:29.828083"], ["id", 1]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 203ms (Views: 0.3ms | ActiveRecord: 10.1ms)
+
+
+Started POST "/bumps.json" for ::1 at 2016-11-27 21:53:05 -0600
+Error occurred while parsing request parameters.
+Contents:
+
+{
+	"latitude":34534534421,
+	"longitude":h54jre4344345,
+	"widthSteps":5,
+	"lengthSteps":453,
+	"depth":237,
+	"videoUrl":"sda32343245245sDASD"
+}
+
+ActionDispatch::ParamsParser::ParseError (795: unexpected token at '{
+	"latitude":34534534421,
+	"longitude":h54jre4344345,
+	"widthSteps":5,
+	"lengthSteps":453,
+	"depth":237,
+	"videoUrl":"sda32343245245sDASD"
+}'):
+  actionpack (4.2.5) lib/action_dispatch/middleware/params_parser.rb:53:in `rescue in parse_formatted_parameters'
+  actionpack (4.2.5) lib/action_dispatch/middleware/params_parser.rb:32:in `parse_formatted_parameters'
+  actionpack (4.2.5) lib/action_dispatch/middleware/params_parser.rb:23:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.5) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.5) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.5) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.5) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.5) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.5) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  rack (1.6.5) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.5) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/jacobotapia/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/jacobotapia/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/jacobotapia/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (18.5ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (93.3ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (72.1ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (154.4ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 21:53:18 -0600
+Processing by BumpsController#index as JSON
+  Parameters: {"bump"=>{}}
+  [1m[35mUser Load (15.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.4ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (11.2ms)
+  Rendered bumps/index.json.jbuilder (34.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 178ms (Views: 61.6ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/bumps.json?user_id=1%27" for ::1 at 2016-11-27 21:53:52 -0600
+Processing by BumpsController#index as JSON
+  Parameters: {"user_id"=>"1'", "bump"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.2ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.2ms)
+  Rendered bumps/index.json.jbuilder (3.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 18ms (Views: 13.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/bumps.json?user_id=2%27" for ::1 at 2016-11-27 21:53:59 -0600
+Processing by BumpsController#index as JSON
+  Parameters: {"user_id"=>"2'", "bump"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.1ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (0.9ms)
+  Rendered bumps/index.json.jbuilder (2.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 17ms (Views: 13.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/bumps.json?user=2%27" for ::1 at 2016-11-27 21:54:07 -0600
+Processing by BumpsController#index as JSON
+  Parameters: {"user"=>"2'", "bump"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.1ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.6ms)
+  Rendered bumps/index.json.jbuilder (3.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 18ms (Views: 14.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/bumps.json?user_id=%3D2%27" for ::1 at 2016-11-27 21:54:52 -0600
+Processing by BumpsController#index as JSON
+  Parameters: {"user_id"=>"=2'", "bump"=>{}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.2ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.1ms)
+  Rendered bumps/index.json.jbuilder (3.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/bumps.json?user_id=1%27" for ::1 at 2016-11-27 21:54:59 -0600
+Processing by BumpsController#index as JSON
+  Parameters: {"user_id"=>"1'", "bump"=>{}}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.1ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.0ms)
+  Rendered bumps/index.json.jbuilder (2.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 17ms (Views: 12.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/bumps" for ::1 at 2016-11-27 21:55:13 -0600
+
+ActionController::RoutingError (No route matches [GET] "/users/bumps"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.5) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.5) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.5) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.5) lib/rack/lock.rb:17:in `call'
+  rack (1.6.5) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.5) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/jacobotapia/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/jacobotapia/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/jacobotapia/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (13.1ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (103.2ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (49.9ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jacobotapia/.rvm/gems/ruby-2.2.1/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (112.0ms)
+
+
+Started OPTIONS "/auth/sign_in" for 127.0.0.1 at 2016-11-27 22:07:00 -0600
+
+
+Started POST "/auth/sign_in" for 127.0.0.1 at 2016-11-27 22:07:01 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"J7-AZo6JoeLgB_uMvdrslw\":{\"token\":\"$2a$10$n82L7eNGmPg.09SXagIfq.1.En0uRVV.c36/jzLQ23GG0Ob4r7HI6\",\"expiry\":1481514749},\"x_2v8-QnpQ-3qWMI8rvcnQ\":{\"token\":\"$2a$10$Ly4rfRmQkROre6PgJh5gc.Ib7xn26Ab4m7ph6g/ySvP7J/fRNEHtu\",\"expiry\":1481515621}}"], ["updated_at", "2016-11-28 04:07:01.785763"], ["id", 1]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-11-28 03:52:29.819367"], ["current_sign_in_at", "2016-11-28 04:07:01.789110"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 3], ["updated_at", "2016-11-28 04:07:01.789910"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"x_2v8-QnpQ-3qWMI8rvcnQ\":{\"token\":\"$2a$10$Ly4rfRmQkROre6PgJh5gc.Ib7xn26Ab4m7ph6g/ySvP7J/fRNEHtu\",\"expiry\":1481515621}}"], ["updated_at", "2016-11-28 04:07:01.795421"], ["id", 1]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Completed 200 OK in 162ms (Views: 0.2ms | ActiveRecord: 4.7ms)
+
+
+Started OPTIONS "/bumps.json" for 127.0.0.1 at 2016-11-27 22:07:01 -0600
+
+
+Started GET "/bumps.json" for 127.0.0.1 at 2016-11-27 22:07:01 -0600
+Processing by BumpsController#index as JSON
+  [1m[36mUser Load (12.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "jacobo@gmail.com"]]
+  [1m[35mBump Load (15.2ms)[0m  SELECT "bumps".* FROM "bumps"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (2.9ms)
+  Rendered bumps/index.json.jbuilder (29.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Completed 200 OK in 143ms (Views: 28.1ms | ActiveRecord: 28.4ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:10:59 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1[0m
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (27.0ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"x_2v8-QnpQ-3qWMI8rvcnQ\":{\"token\":\"$2a$10$Ly4rfRmQkROre6PgJh5gc.Ib7xn26Ab4m7ph6g/ySvP7J/fRNEHtu\",\"expiry\":1481515621},\"lSZYitP1H9weNmjMMdVqsQ\":{\"token\":\"$2a$10$zXuSwERw4mAkKg1EGo3TPeYcHZfeiFlbZgGUPS5uc3HB2jhB/C81a\",\"expiry\":1481515859}}"], ["updated_at", "2016-11-28 04:10:59.183370"], ["id", 1]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-11-28 04:07:01.789110"], ["current_sign_in_at", "2016-11-28 04:10:59.214401"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 4], ["updated_at", "2016-11-28 04:10:59.215526"], ["id", 1]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"lSZYitP1H9weNmjMMdVqsQ\":{\"token\":\"$2a$10$zXuSwERw4mAkKg1EGo3TPeYcHZfeiFlbZgGUPS5uc3HB2jhB/C81a\",\"expiry\":1481515859}}"], ["updated_at", "2016-11-28 04:10:59.223463"], ["id", 1]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 180ms (Views: 0.3ms | ActiveRecord: 33.1ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 22:10:59 -0600
+Processing by BumpsController#index as JSON
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.2ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.4ms)
+  Rendered bumps/index.json.jbuilder (11.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 109ms (Views: 34.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/auth/sign_in" for 127.0.0.1 at 2016-11-27 22:13:34 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (17.9ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"lSZYitP1H9weNmjMMdVqsQ\":{\"token\":\"$2a$10$zXuSwERw4mAkKg1EGo3TPeYcHZfeiFlbZgGUPS5uc3HB2jhB/C81a\",\"expiry\":1481515859},\"Hc7GZVv6d-yHWsKHkvtl-A\":{\"token\":\"$2a$10$p1K.HF07GZJxCA5bsC1Jre9jx3DVNB65pQPSGxCh4Wxr/lnV2MF.u\",\"expiry\":1481516014}}"], ["updated_at", "2016-11-28 04:13:34.577506"], ["id", 1]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-11-28 04:10:59.214401"], ["current_sign_in_at", "2016-11-28 04:13:34.599373"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 5], ["updated_at", "2016-11-28 04:13:34.601009"], ["id", 1]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"Hc7GZVv6d-yHWsKHkvtl-A\":{\"token\":\"$2a$10$p1K.HF07GZJxCA5bsC1Jre9jx3DVNB65pQPSGxCh4Wxr/lnV2MF.u\",\"expiry\":1481516014}}"], ["updated_at", "2016-11-28 04:13:34.607993"], ["id", 1]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Completed 200 OK in 167ms (Views: 0.3ms | ActiveRecord: 22.6ms)
+
+
+Started GET "/bumps.json" for 127.0.0.1 at 2016-11-27 22:13:34 -0600
+Processing by BumpsController#index as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "jacobo@gmail.com"]]
+  [1m[35mBump Load (0.2ms)[0m  SELECT "bumps".* FROM "bumps"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.6ms)
+  Rendered bumps/index.json.jbuilder (12.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 100ms (Views: 31.6ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/auth/sign_in" for 127.0.0.1 at 2016-11-27 22:15:16 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1[0m
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (15.7ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"Hc7GZVv6d-yHWsKHkvtl-A\":{\"token\":\"$2a$10$p1K.HF07GZJxCA5bsC1Jre9jx3DVNB65pQPSGxCh4Wxr/lnV2MF.u\",\"expiry\":1481516014},\"fU2HFfH9hOgMAQn_HhaGSw\":{\"token\":\"$2a$10$kNumT16JfhvAu2VOtyZ5MuhcUzT7suUkeKEJKUns5zwwO/y3Uafi.\",\"expiry\":1481516116}}"], ["updated_at", "2016-11-28 04:15:16.539114"], ["id", 1]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-11-28 04:13:34.599373"], ["current_sign_in_at", "2016-11-28 04:15:16.558354"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 6], ["updated_at", "2016-11-28 04:15:16.559974"], ["id", 1]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"fU2HFfH9hOgMAQn_HhaGSw\":{\"token\":\"$2a$10$kNumT16JfhvAu2VOtyZ5MuhcUzT7suUkeKEJKUns5zwwO/y3Uafi.\",\"expiry\":1481516116}}"], ["updated_at", "2016-11-28 04:15:16.566073"], ["id", 1]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 177ms (Views: 0.4ms | ActiveRecord: 20.7ms)
+
+
+Started GET "/bumps.json" for 127.0.0.1 at 2016-11-27 22:15:16 -0600
+Processing by BumpsController#index as JSON
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.2ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.5ms)
+  Rendered bumps/index.json.jbuilder (12.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 111ms (Views: 34.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/auth/sign_in" for 127.0.0.1 at 2016-11-27 22:15:28 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"fU2HFfH9hOgMAQn_HhaGSw\":{\"token\":\"$2a$10$kNumT16JfhvAu2VOtyZ5MuhcUzT7suUkeKEJKUns5zwwO/y3Uafi.\",\"expiry\":1481516116},\"VePbmH7J3jxDxW5b8WyYrQ\":{\"token\":\"$2a$10$EYGEtGKW3Ex0/6o9mS9I2eZoNuirfAoBePLg8qGSSdXtelByhu2g2\",\"expiry\":1481516129}}"], ["updated_at", "2016-11-28 04:15:29.033383"], ["id", 1]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-11-28 04:15:16.558354"], ["current_sign_in_at", "2016-11-28 04:15:29.036948"], ["sign_in_count", 7], ["updated_at", "2016-11-28 04:15:29.037864"], ["id", 1]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"VePbmH7J3jxDxW5b8WyYrQ\":{\"token\":\"$2a$10$EYGEtGKW3Ex0/6o9mS9I2eZoNuirfAoBePLg8qGSSdXtelByhu2g2\",\"expiry\":1481516129}}"], ["updated_at", "2016-11-28 04:15:29.045321"], ["id", 1]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Completed 200 OK in 150ms (Views: 0.3ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/bumps.json" for 127.0.0.1 at 2016-11-27 22:15:29 -0600
+Processing by BumpsController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "jacobo@gmail.com"]]
+  [1m[35mBump Load (0.2ms)[0m  SELECT "bumps".* FROM "bumps"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.5ms)
+  Rendered bumps/index.json.jbuilder (3.9ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 84ms (Views: 15.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/auth/sign_in" for 127.0.0.1 at 2016-11-27 22:16:45 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1[0m
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"VePbmH7J3jxDxW5b8WyYrQ\":{\"token\":\"$2a$10$EYGEtGKW3Ex0/6o9mS9I2eZoNuirfAoBePLg8qGSSdXtelByhu2g2\",\"expiry\":1481516129},\"ibutEZfKmkNKizQZZb2lvQ\":{\"token\":\"$2a$10$H03MgfdxBiXlVjEju0o87.Ol1D8xDnoRfyq4C0DGU/aXo0y.J4hGe\",\"expiry\":1481516205}}"], ["updated_at", "2016-11-28 04:16:45.790268"], ["id", 1]]
+  [1m[35m (2.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-11-28 04:15:29.036948"], ["current_sign_in_at", "2016-11-28 04:16:45.794613"], ["sign_in_count", 8], ["updated_at", "2016-11-28 04:16:45.795510"], ["id", 1]]
+  [1m[36m (49.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"ibutEZfKmkNKizQZZb2lvQ\":{\"token\":\"$2a$10$H03MgfdxBiXlVjEju0o87.Ol1D8xDnoRfyq4C0DGU/aXo0y.J4hGe\",\"expiry\":1481516205}}"], ["updated_at", "2016-11-28 04:16:45.850267"], ["id", 1]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 203ms (Views: 0.3ms | ActiveRecord: 57.3ms)
+
+
+Started GET "/bumps.json" for 127.0.0.1 at 2016-11-27 22:16:45 -0600
+Processing by BumpsController#index as JSON
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.2ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.3ms)
+  Rendered bumps/index.json.jbuilder (3.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 86ms (Views: 16.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:20:05 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (23.5ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"ibutEZfKmkNKizQZZb2lvQ\":{\"token\":\"$2a$10$H03MgfdxBiXlVjEju0o87.Ol1D8xDnoRfyq4C0DGU/aXo0y.J4hGe\",\"expiry\":1481516205},\"i7pmwkPSYRWEVydzyxJSOQ\":{\"token\":\"$2a$10$arSkEzZlaZ2NCXQcuyry5.7y.r5/uR2g53e6OmKa39ZOrSCTID3HC\",\"expiry\":1481516406}}"], ["updated_at", "2016-11-28 04:20:06.119750"], ["id", 1]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-11-28 04:16:45.794613"], ["current_sign_in_at", "2016-11-28 04:20:06.148880"], ["current_sign_in_ip", "::1"], ["sign_in_count", 9], ["updated_at", "2016-11-28 04:20:06.150198"], ["id", 1]]
+  [1m[35m (34.6ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"i7pmwkPSYRWEVydzyxJSOQ\":{\"token\":\"$2a$10$arSkEzZlaZ2NCXQcuyry5.7y.r5/uR2g53e6OmKa39ZOrSCTID3HC\",\"expiry\":1481516406}}"], ["updated_at", "2016-11-28 04:20:06.189150"], ["id", 1]]
+  [1m[35m (3.0ms)[0m  commit transaction
+Completed 200 OK in 211ms (Views: 0.2ms | ActiveRecord: 64.9ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 22:20:06 -0600
+Processing by BumpsController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "jacobo@gmail.com"]]
+  [1m[35mBump Load (0.2ms)[0m  SELECT "bumps".* FROM "bumps"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.6ms)
+  Rendered bumps/index.json.jbuilder (13.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 100ms (Views: 31.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:20:36 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1[0m
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"i7pmwkPSYRWEVydzyxJSOQ\":{\"token\":\"$2a$10$arSkEzZlaZ2NCXQcuyry5.7y.r5/uR2g53e6OmKa39ZOrSCTID3HC\",\"expiry\":1481516406},\"Feya0fuASYPfi9yoOpYPJA\":{\"token\":\"$2a$10$hJ5mb..XxsKKB5CQWsrOp.pgLLRNMAUo/MogmG/Lc1DPHFOB3EOYe\",\"expiry\":1481516436}}"], ["updated_at", "2016-11-28 04:20:36.536755"], ["id", 1]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-11-28 04:20:06.148880"], ["current_sign_in_at", "2016-11-28 04:20:36.541850"], ["last_sign_in_ip", "::1"], ["sign_in_count", 10], ["updated_at", "2016-11-28 04:20:36.543405"], ["id", 1]]
+  [1m[36m (17.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"Feya0fuASYPfi9yoOpYPJA\":{\"token\":\"$2a$10$hJ5mb..XxsKKB5CQWsrOp.pgLLRNMAUo/MogmG/Lc1DPHFOB3EOYe\",\"expiry\":1481516436}}"], ["updated_at", "2016-11-28 04:20:36.565782"], ["id", 1]]
+  [1m[36m (3.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 170ms (Views: 0.3ms | ActiveRecord: 22.9ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 22:20:36 -0600
+Processing by BumpsController#index as JSON
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.2ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.4ms)
+  Rendered bumps/index.json.jbuilder (12.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 107ms (Views: 35.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:21:22 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (20.7ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"Feya0fuASYPfi9yoOpYPJA\":{\"token\":\"$2a$10$hJ5mb..XxsKKB5CQWsrOp.pgLLRNMAUo/MogmG/Lc1DPHFOB3EOYe\",\"expiry\":1481516436},\"2cMiZguHCiS88qhm7PwNcA\":{\"token\":\"$2a$10$Nv6vQLqVpxNZQ736SU6A.OTxzeFn0I5O43wRA1RtnU1tg2F.qyHGq\",\"expiry\":1481516482}}"], ["updated_at", "2016-11-28 04:21:22.906243"], ["id", 1]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-11-28 04:20:36.541850"], ["current_sign_in_at", "2016-11-28 04:21:22.931294"], ["sign_in_count", 11], ["updated_at", "2016-11-28 04:21:22.933212"], ["id", 1]]
+  [1m[35m (3.6ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"2cMiZguHCiS88qhm7PwNcA\":{\"token\":\"$2a$10$Nv6vQLqVpxNZQ736SU6A.OTxzeFn0I5O43wRA1RtnU1tg2F.qyHGq\",\"expiry\":1481516482}}"], ["updated_at", "2016-11-28 04:21:22.942563"], ["id", 1]]
+  [1m[35m (3.2ms)[0m  commit transaction
+Completed 200 OK in 173ms (Views: 0.3ms | ActiveRecord: 30.2ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 22:21:22 -0600
+Processing by BumpsController#index as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "jacobo@gmail.com"]]
+  [1m[35mBump Load (0.2ms)[0m  SELECT "bumps".* FROM "bumps"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.4ms)
+  Rendered bumps/index.json.jbuilder (11.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 200 OK in 101ms (Views: 32.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:21:46 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1[0m
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"2cMiZguHCiS88qhm7PwNcA\":{\"token\":\"$2a$10$Nv6vQLqVpxNZQ736SU6A.OTxzeFn0I5O43wRA1RtnU1tg2F.qyHGq\",\"expiry\":1481516482},\"b2eDvVEHLP2WNnLEH0jtFw\":{\"token\":\"$2a$10$1KefxlOstLYJWCBsEYc24.JInCBez81Dn0b4/6HA5V2ZWYEk9BNpK\",\"expiry\":1481516506}}"], ["updated_at", "2016-11-28 04:21:46.664095"], ["id", 1]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-11-28 04:21:22.931294"], ["current_sign_in_at", "2016-11-28 04:21:46.667685"], ["sign_in_count", 12], ["updated_at", "2016-11-28 04:21:46.668595"], ["id", 1]]
+  [1m[36m (15.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"b2eDvVEHLP2WNnLEH0jtFw\":{\"token\":\"$2a$10$1KefxlOstLYJWCBsEYc24.JInCBez81Dn0b4/6HA5V2ZWYEk9BNpK\",\"expiry\":1481516506}}"], ["updated_at", "2016-11-28 04:21:46.689470"], ["id", 1]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 163ms (Views: 0.6ms | ActiveRecord: 19.6ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 22:21:46 -0600
+Processing by BumpsController#index as JSON
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.2ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.8ms)
+  Rendered bumps/index.json.jbuilder (4.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 89ms (Views: 16.7ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:25:01 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (28.1ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"b2eDvVEHLP2WNnLEH0jtFw\":{\"token\":\"$2a$10$1KefxlOstLYJWCBsEYc24.JInCBez81Dn0b4/6HA5V2ZWYEk9BNpK\",\"expiry\":1481516506},\"_ROAS-s9hOLuS31nuR34jg\":{\"token\":\"$2a$10$PYV2.jZ5ZptWCYApeYibIuWUwTIu8jYn2aRU8gd5QhRJz.W4LT62a\",\"expiry\":1481516701}}"], ["updated_at", "2016-11-28 04:25:01.588481"], ["id", 1]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-11-28 04:21:46.667685"], ["current_sign_in_at", "2016-11-28 04:25:01.620840"], ["sign_in_count", 13], ["updated_at", "2016-11-28 04:25:01.622410"], ["id", 1]]
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"_ROAS-s9hOLuS31nuR34jg\":{\"token\":\"$2a$10$PYV2.jZ5ZptWCYApeYibIuWUwTIu8jYn2aRU8gd5QhRJz.W4LT62a\",\"expiry\":1481516701}}"], ["updated_at", "2016-11-28 04:25:01.629955"], ["id", 1]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Completed 200 OK in 179ms (Views: 0.6ms | ActiveRecord: 33.2ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 22:25:01 -0600
+Processing by BumpsController#index as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "jacobo@gmail.com"]]
+  [1m[35mBump Load (0.2ms)[0m  SELECT "bumps".* FROM "bumps"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.0ms)
+  Rendered bumps/index.json.jbuilder (2.9ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Completed 200 OK in 86ms (Views: 14.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:26:06 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1[0m
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"_ROAS-s9hOLuS31nuR34jg\":{\"token\":\"$2a$10$PYV2.jZ5ZptWCYApeYibIuWUwTIu8jYn2aRU8gd5QhRJz.W4LT62a\",\"expiry\":1481516701},\"MBudEHB8RGetm9-9DhJv_g\":{\"token\":\"$2a$10$gW82a16w9ygCXYbcJWj3iOp5268hnRP3hDRfY/kHDTmyKG6JWZism\",\"expiry\":1481516766}}"], ["updated_at", "2016-11-28 04:26:06.941039"], ["id", 1]]
+  [1m[35m (1.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-11-28 04:25:01.620840"], ["current_sign_in_at", "2016-11-28 04:26:06.945991"], ["sign_in_count", 14], ["updated_at", "2016-11-28 04:26:06.946918"], ["id", 1]]
+  [1m[36m (15.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"MBudEHB8RGetm9-9DhJv_g\":{\"token\":\"$2a$10$gW82a16w9ygCXYbcJWj3iOp5268hnRP3hDRfY/kHDTmyKG6JWZism\",\"expiry\":1481516766}}"], ["updated_at", "2016-11-28 04:26:06.968680"], ["id", 1]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 165ms (Views: 0.3ms | ActiveRecord: 23.2ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 22:26:06 -0600
+Processing by BumpsController#index as JSON
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.2ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.0ms)
+  Rendered bumps/index.json.jbuilder (3.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 84ms (Views: 14.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:27:24 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (8.8ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"MBudEHB8RGetm9-9DhJv_g\":{\"token\":\"$2a$10$gW82a16w9ygCXYbcJWj3iOp5268hnRP3hDRfY/kHDTmyKG6JWZism\",\"expiry\":1481516766},\"Yqcq_oZubcS-Erh6-MTGAA\":{\"token\":\"$2a$10$Bhxx9EuNOtbaB4QLE8JasOYqQzF.ZuNFLj7BojrqY7H2e36Qd./X.\",\"expiry\":1481516844}}"], ["updated_at", "2016-11-28 04:27:24.749531"], ["id", 1]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-11-28 04:26:06.945991"], ["current_sign_in_at", "2016-11-28 04:27:24.763667"], ["sign_in_count", 15], ["updated_at", "2016-11-28 04:27:24.765837"], ["id", 1]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"Yqcq_oZubcS-Erh6-MTGAA\":{\"token\":\"$2a$10$Bhxx9EuNOtbaB4QLE8JasOYqQzF.ZuNFLj7BojrqY7H2e36Qd./X.\",\"expiry\":1481516844}}"], ["updated_at", "2016-11-28 04:27:24.773131"], ["id", 1]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Completed 200 OK in 168ms (Views: 0.3ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 22:27:24 -0600
+Processing by BumpsController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "jacobo@gmail.com"]]
+  [1m[35mBump Load (0.2ms)[0m  SELECT "bumps".* FROM "bumps"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.8ms)
+  Rendered bumps/index.json.jbuilder (4.8ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Completed 200 OK in 99ms (Views: 22.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:28:15 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1[0m
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (21.1ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"Yqcq_oZubcS-Erh6-MTGAA\":{\"token\":\"$2a$10$Bhxx9EuNOtbaB4QLE8JasOYqQzF.ZuNFLj7BojrqY7H2e36Qd./X.\",\"expiry\":1481516844},\"hYgux94WK9G3NY7iVPWr_w\":{\"token\":\"$2a$10$wvS6ErY1L9HSKO6uD4ZeN.qR1Xr6ionSq3yIeteJ25handmOEogwO\",\"expiry\":1481516895}}"], ["updated_at", "2016-11-28 04:28:15.678860"], ["id", 1]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-11-28 04:27:24.763667"], ["current_sign_in_at", "2016-11-28 04:28:15.703269"], ["sign_in_count", 16], ["updated_at", "2016-11-28 04:28:15.704222"], ["id", 1]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"hYgux94WK9G3NY7iVPWr_w\":{\"token\":\"$2a$10$wvS6ErY1L9HSKO6uD4ZeN.qR1Xr6ionSq3yIeteJ25handmOEogwO\",\"expiry\":1481516895}}"], ["updated_at", "2016-11-28 04:28:15.711632"], ["id", 1]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 167ms (Views: 0.2ms | ActiveRecord: 27.6ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 22:28:15 -0600
+Processing by BumpsController#index as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.2ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.5ms)
+  Rendered bumps/index.json.jbuilder (3.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 94ms (Views: 20.8ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:36:15 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (46.9ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36m (0.7ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (773.7ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"hYgux94WK9G3NY7iVPWr_w\":{\"token\":\"$2a$10$wvS6ErY1L9HSKO6uD4ZeN.qR1Xr6ionSq3yIeteJ25handmOEogwO\",\"expiry\":1481516895},\"woCFxp0wbijhtFjCECNe6A\":{\"token\":\"$2a$10$kO5Ad56jkpi/2KhEl8KhU.eR3yot.JhnRxcZ4RqWttgCEMy9sOSN6\",\"expiry\":1481517376}}"], ["updated_at", "2016-11-28 04:36:16.581778"], ["id", 1]]
+  [1m[36m (109.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-11-28 04:28:15.703269"], ["current_sign_in_at", "2016-11-28 04:36:17.470729"], ["sign_in_count", 17], ["updated_at", "2016-11-28 04:36:17.472262"], ["id", 1]]
+  [1m[35m (20.2ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"woCFxp0wbijhtFjCECNe6A\":{\"token\":\"$2a$10$kO5Ad56jkpi/2KhEl8KhU.eR3yot.JhnRxcZ4RqWttgCEMy9sOSN6\",\"expiry\":1481517376}}"], ["updated_at", "2016-11-28 04:36:17.501735"], ["id", 1]]
+  [1m[35m (2.2ms)[0m  commit transaction
+Completed 200 OK in 1112ms (Views: 0.8ms | ActiveRecord: 954.5ms)
+
+
+Started OPTIONS "/auth/sign_in" for ::1 at 2016-11-27 22:36:22 -0600
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:36:22 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1[0m
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"woCFxp0wbijhtFjCECNe6A\":{\"token\":\"$2a$10$kO5Ad56jkpi/2KhEl8KhU.eR3yot.JhnRxcZ4RqWttgCEMy9sOSN6\",\"expiry\":1481517376},\"amU1Lj_kdccpauWwRyxzKw\":{\"token\":\"$2a$10$waFe93DtKuWMQTR2TqxqF.93qSircdd8fk5oS4rh.iJtmROHzieby\",\"expiry\":1481517382}}"], ["updated_at", "2016-11-28 04:36:22.659102"], ["id", 1]]
+  [1m[35m (55.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-11-28 04:36:17.470729"], ["current_sign_in_at", "2016-11-28 04:36:22.716523"], ["sign_in_count", 18], ["updated_at", "2016-11-28 04:36:22.717653"], ["id", 1]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"amU1Lj_kdccpauWwRyxzKw\":{\"token\":\"$2a$10$waFe93DtKuWMQTR2TqxqF.93qSircdd8fk5oS4rh.iJtmROHzieby\",\"expiry\":1481517382}}"], ["updated_at", "2016-11-28 04:36:22.725039"], ["id", 1]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 204ms (Views: 0.3ms | ActiveRecord: 62.6ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 22:36:22 -0600
+Processing by BumpsController#index as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "jacobo@gmail.com"]]
+  [1m[36mBump Load (0.3ms)[0m  [1mSELECT "bumps".* FROM "bumps"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (4.2ms)
+  Rendered bumps/index.json.jbuilder (39.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 167ms (Views: 85.7ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/auth/sign_in" for ::1 at 2016-11-27 22:37:09 -0600
+Processing by DeviseTokenAuth::SessionsController#create as JSON
+  Parameters: {"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"jacobo@gmail.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE (email = 'jacobo@gmail.com' AND provider='email')  ORDER BY "users"."id" ASC LIMIT 1
+Unpermitted parameter: session
+Unpermitted parameter: session
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (182.7ms)[0m  UPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["tokens", "{\"amU1Lj_kdccpauWwRyxzKw\":{\"token\":\"$2a$10$waFe93DtKuWMQTR2TqxqF.93qSircdd8fk5oS4rh.iJtmROHzieby\",\"expiry\":1481517382},\"66si7pFmazKDHcRksoxgZQ\":{\"token\":\"$2a$10$lb6wD0QHyMla4I9u2C5sU.Y8QKSG2C5..3CVoiWTveWR4ZBVBb2k2\",\"expiry\":1481517429}}"], ["updated_at", "2016-11-28 04:37:09.333637"], ["id", 1]]
+  [1m[36m (34.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2016-11-28 04:36:22.716523"], ["current_sign_in_at", "2016-11-28 04:37:09.553974"], ["sign_in_count", 19], ["updated_at", "2016-11-28 04:37:09.555276"], ["id", 1]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "tokens" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["tokens", "{\"66si7pFmazKDHcRksoxgZQ\":{\"token\":\"$2a$10$lb6wD0QHyMla4I9u2C5sU.Y8QKSG2C5..3CVoiWTveWR4ZBVBb2k2\",\"expiry\":1481517429}}"], ["updated_at", "2016-11-28 04:37:09.563913"], ["id", 1]]
+  [1m[35m (22.8ms)[0m  commit transaction
+Completed 200 OK in 386ms (Views: 0.5ms | ActiveRecord: 244.0ms)
+
+
+Started GET "/bumps.json" for ::1 at 2016-11-27 22:37:09 -0600
+Processing by BumpsController#index as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "jacobo@gmail.com"]]
+  [1m[35mBump Load (0.4ms)[0m  SELECT "bumps".* FROM "bumps"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered bumps/_bump.json.jbuilder (1.4ms)
+  Rendered bumps/index.json.jbuilder (32.4ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Completed 200 OK in 138ms (Views: 59.1ms | ActiveRecord: 1.0ms)
