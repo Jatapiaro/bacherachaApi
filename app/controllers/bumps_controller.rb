@@ -72,6 +72,6 @@ class BumpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bump_params
-      params.require(:bump).permit(:latitude, :longitude, :lengthSteps, :widthSteps, :depth, :videoUrl)
+      params.require(:bump).permit(:latitude, :longitude, :lengthSteps, :widthSteps, :depth, :videoUrl, :price, :costales, :completed, :kg)
     end
 end
