@@ -1,5 +1,5 @@
 class DonativesController < ApplicationController
-  before_action :set_donative, only: [:edit, :update, :destroy]
+  before_action :set_donative, only: [:edit, :update, :destroy, :show]
   before_action :set_bump
 
 
@@ -22,9 +22,9 @@ class DonativesController < ApplicationController
   def create
 
     @donative = current_user.donatives.new(donative_params)
+    @donative.email = current_user.email
     @donative.bump=@bump
     ##@donative = Donative.new(donative_params)
-
     respond_to do |format|
       if @donative.save
         format.html { redirect_to @donative.bump, notice: 'Donative was successfully created.' }
