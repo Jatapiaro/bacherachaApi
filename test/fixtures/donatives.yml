@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  bump_id: 
+  money: 1
+  comment: MyText
+
+two:
+  user_id: 
+  bump_id: 
+  money: 1
+  comment: MyText

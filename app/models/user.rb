@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
           :recoverable, :rememberable, :trackable, :validatable
 
   has_many :bumps
+  has_many :donatives
   include DeviseTokenAuth::Concerns::User
 end
